@@ -11,7 +11,7 @@ const URL =
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 var randomstring = require("randomstring");
-const { response } = require("express");
+
 
 app.use(express.json());
 app.use(
