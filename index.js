@@ -121,12 +121,12 @@ app.post("/reset", async (req, res) => {
       var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "savitestmail44@gmail.com",
-          password: process.env.password,
+          user: "ssavitha1905@gmail.com",
+          pass: process.env.password,
         },
       });
       var mailoptions = {
-        from: "savitestmail44@gmail.com",
+        from: "ssavitha1905@gmail.com",
         to: mailid,
         subject: "password reset",
         text: `Your Random text is ${string}. Click the link to reset password ${link}`,
@@ -136,7 +136,9 @@ app.post("/reset", async (req, res) => {
         if (error) {
           res.json({
             message:error,
+            
           });
+          console.log(error)
         } else {
           console.log("Email sent: " + info.response);
           res.json({
@@ -164,14 +166,14 @@ app.post("/resetpage", async function (request, response) {
     const hash = await bcryptjs.hash(request.body.password, salt);
     request.body.password = hash;
     const user = await db
-      .collection("users")
+      .collection("login")
       .findOne({ email: request.body.email });
     if (user) {
-      if (user.string === request.body.string) {
+      if (user.string === request.body.String) {
         await db
-          .collection("users")
+          .collection("login")
           .updateOne(
-            { string: string },
+            { String: string },
             { $set: { password: request.body.password } }
           );
         response.json({
@@ -188,7 +190,7 @@ app.post("/resetpage", async function (request, response) {
       });
     }
     await db
-      .collection("users")
+      .collection("login")
       .updateOne({ string: string }, { $unset: { string: "" } });
   } catch (error) {
     console.log(error);
