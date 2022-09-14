@@ -16,7 +16,7 @@ var randomstring = require("randomstring");
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://passwordreset-frontend.vercel.app",
+    origin: "*",
   })
 );
 let authenticate = function (request, response, next) {
