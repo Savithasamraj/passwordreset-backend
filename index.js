@@ -39,7 +39,7 @@ let authenticate = function (request, response, next) {
     });
   }
 };
-app.post("https://passwordreset-frontend.vercel.app/register", async function (req, res) {
+app.post("/register", async function (req, res) {
   console.log("register");
   try {
     const connection = await mongoClient.connect(URL);
@@ -64,7 +64,7 @@ app.post("https://passwordreset-frontend.vercel.app/register", async function (r
   }
 });
 
-app.post("https://passwordreset-frontend.vercel.app", async function (req, res) {
+app.post("/", async function (req, res) {
   try {
     const connection = await mongoClient.connect(URL);
     console.log("data1");
@@ -98,7 +98,7 @@ app.post("https://passwordreset-frontend.vercel.app", async function (req, res) 
     console.log("error");
   }
 });
-app.post("https://passwordreset-frontend.vercel.app/reset", async (req, res) => {
+app.post("/reset", async (req, res) => {
   try {
     const connection = await mongoClient.connect(URL);
     const db = connection.db("password");
@@ -156,7 +156,7 @@ app.post("https://passwordreset-frontend.vercel.app/reset", async (req, res) => 
   }
 });
 
-app.post("https://passwordreset-frontend.vercel.app/resetpage", async function (request, response) {
+app.post("/resetpage", async function (request, response) {
   let mailid = request.body.email;
   let string = request.body.string;
   try {
@@ -197,7 +197,7 @@ app.post("https://passwordreset-frontend.vercel.app/resetpage", async function (
   }
 });
 
-app.post("https://passwordreset-frontend.vercel.app/dashboard", authenticate, async function (request, response) {
+app.post("/dashboard", authenticate, async function (request, response) {
   try {
     const connection = await mongoClient.connect(URL);
     const db = connection.db("password");
@@ -213,7 +213,7 @@ app.post("https://passwordreset-frontend.vercel.app/dashboard", authenticate, as
   }
 });
 
-app.get("https://passwordreset-frontend.vercel.app/dashboard", authenticate, async function (request, response) {
+app.get("/dashboard", authenticate, async function (request, response) {
   try {
     const connection = await mongoClient.connect(URL);
     const db = connection.db("password");
