@@ -4,7 +4,7 @@ const cors = require("cors");
 const bcryptjs = require("bcryptjs");
 const mongodb = require("mongodb");
 const mongoClient = mongodb.MongoClient;
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv");
 const URL =
   "mongodb+srv://savitha:Savitha19@cluster0.ngd5ggy.mongodb.net/?retryWrites=true&w=majority";
 
